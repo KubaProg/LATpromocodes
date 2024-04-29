@@ -36,6 +36,6 @@ public class Product {
     private BigDecimal regularPrice;
 
     @Column(name = "currency", nullable = false)
-    private Currency currency;
+    private String currency;
 
 }
