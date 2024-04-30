@@ -1,6 +1,5 @@
 package eu.sii.promocodes.model.enums;
 
-import eu.sii.promocodes.exception.currency.WrongCurrencyException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

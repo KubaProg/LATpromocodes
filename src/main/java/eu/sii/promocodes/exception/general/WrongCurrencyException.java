@@ -1,4 +1,4 @@
-package eu.sii.promocodes.exception.currency;
+package eu.sii.promocodes.exception.general;
 
 import eu.sii.promocodes.exception.BusinessException;
 import org.springframework.http.HttpStatus;
