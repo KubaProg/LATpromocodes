@@ -16,7 +16,7 @@ public class PromoCodeAmountRequestDto {
     @NotBlank(message = "Code cannot be blank.")
     @NotNull(message = "Code can not be null.")
     @Length(min = 3, max = 24, message = "Code must be between 3 and 24 characters.")
-    @Pattern(regexp = "^\\S*$", message = "Code must not contain any whitespace.")
+    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Code must contain only alphanumeric characters and no whitespaces..")
     private String code;
 
     @NotNull(message = "Expiration date can not be null.")

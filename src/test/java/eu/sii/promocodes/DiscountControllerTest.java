@@ -40,7 +40,7 @@ public class DiscountControllerTest {
     public void testGetTheDiscountPrice() throws Exception {
         DiscountResulRequestDto discountRequest = new DiscountResulRequestDto(
                 1L,
-                "SAVE10%"
+                "SAVE10"
         );
 
         DiscountResultResponseDto discountResponse = DiscountResultResponseDto.builder()

@@ -19,7 +19,7 @@ INSERT INTO promo_codes_amount (code, expiration_date, currency, max_usages, cur
                                                                                                                   ('SUMMER2023', '2023-08-01T23:59:59', 'EUR', 30, 25, 10.00);
 
 INSERT INTO promo_codes_percentage (code, expiration_date, currency, max_usages, current_usages, discount_rate) VALUES
-                                                                                                                    ('SAVE10%', '2024-08-15T23:59:59', 'USD', 200, 50, 10.00),
+                                                                                                                    ('SAVE10', '2024-08-15T23:59:59', 'USD', 200, 50, 10.00),
                                                                                                                     ('ELECTRONICS15', '2024-04-30T23:59:59', 'USD', 150, 25, 15.00),
                                                                                                                     ('SMARTHOME5', '2024-09-30T23:59:59', 'EUR', 100, 40, 5.00),
                                                                                                                     ('GADGET20', '2024-03-31T23:59:59', 'USD', 120, 30, 20.00),
@@ -33,8 +33,7 @@ INSERT INTO purchases (product_id, regular_price, date_of_purchase, discount_app
                                                                                           (4, 1099.99, '2024-06-01T14:45:00', 100.00), -- Using promo code "TVDEAL100"
                                                                                           (5, 149.99, '2023-11-01T15:15:00', 0.00), -- No promo code
                                                                                           (6, 399.99, '2024-05-01T16:30:00', 20.00), -- Using promo code "DISCOUNT20"
-                                                                                          (7, 899.99, '2024-08-01T17:00:00', 10.00), -- Using promo code "SAVE10%"
+                                                                                          (7, 899.99, '2024-08-01T17:00:00', 10.00), -- Using promo code "SAVE10"
                                                                                           (8, 99.99, '2024-02-01T11:00:00', 0.00), -- No promo code
                                                                                           (9, 499.99, '2024-01-01T12:00:00', 0.00), -- No promo code
                                                                                           (10, 299.99, '2023-09-01T13:00:00', 10.00); -- Using promo code "AUTUMN10"
-
