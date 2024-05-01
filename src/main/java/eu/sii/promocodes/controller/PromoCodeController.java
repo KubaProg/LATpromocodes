@@ -1,9 +1,13 @@
 package eu.sii.promocodes.controller;
 
 import eu.sii.promocodes.exception.RequestNotValidException;
+import eu.sii.promocodes.model.dto.discount.DiscountResulRequestDto;
+import eu.sii.promocodes.model.dto.discount.DiscountResultResponseDto;
 import eu.sii.promocodes.model.dto.promoCode.PromoCodeAmountRequestDto;
 import eu.sii.promocodes.model.dto.promoCode.PromoCodePercentageRequestDto;
+import eu.sii.promocodes.service.DiscountService;
 import eu.sii.promocodes.service.PromoCodeService;
+import eu.sii.promocodes.utils.OperationUtils;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +24,7 @@ public class PromoCodeController {
 
     @PostMapping("/amount")
     public ResponseEntity<String> addPromoCodeAmount(@Valid @RequestBody PromoCodeAmountRequestDto promoCodeAmountRequestDto, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            throw new RequestNotValidException(bindingResult);
-        }
+        OperationUtils.isRequestValid(bindingResult);
 
         this.promoCodeService.addPromoCodeAmount(promoCodeAmountRequestDto);
         return ResponseEntity.ok("The amount promo code has been saved successfully");
@@ -31,10 +32,7 @@ public class PromoCodeController {
 
     @PostMapping("/percentage")
     public ResponseEntity<String> addPromoCodeAmount(@Valid @RequestBody PromoCodePercentageRequestDto promoCodePercentageRequestDto, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            throw new RequestNotValidException(bindingResult);
-        }
+        OperationUtils.isRequestValid(bindingResult);
 
         this.promoCodeService.addPromoCodePercentage(promoCodePercentageRequestDto);
         return ResponseEntity.ok("The percentage promo code has been saved successfully");
@@ -47,8 +45,7 @@ public class PromoCodeController {
 
     @GetMapping("/{code}")
     public ResponseEntity<?> getPromoCodeDetailsByCode(@PathVariable String code) {
-        Object response = this.promoCodeService.getPromoCodeDetailsByCode(code);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(this.promoCodeService.getPromoCodeDetailsByCode(code));
     }
 
 
