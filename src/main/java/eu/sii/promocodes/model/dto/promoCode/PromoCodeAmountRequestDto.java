@@ -1,6 +1,7 @@
 package eu.sii.promocodes.model.dto.promoCode;
 
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -8,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 import java.math.BigDecimal;
 @Getter
 @Setter
+@AllArgsConstructor
 public class PromoCodeAmountRequestDto {
     private Long id;
 

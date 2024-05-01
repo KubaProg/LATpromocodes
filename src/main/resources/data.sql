@@ -25,3 +25,16 @@ INSERT INTO promo_codes_percentage (code, expiration_date, currency, max_usages,
                                                                                                                     ('GADGET20', '2024-03-31T23:59:59', 'USD', 120, 30, 20.00),
                                                                                                                     ('FLASHSALE2023', '2023-11-01T23:59:59', 'USD', 50, 45, 20.00),
                                                                                                                     ('AUTUMN10', '2023-09-30T23:59:59', 'EUR', 80, 70, 10.00);
+
+INSERT INTO purchases (product_id, regular_price, date_of_purchase, discount_applied) VALUES
+                                                                                          (1, 1299.99, '2024-04-01T12:00:00', 50.00), -- Using promo code "SAVE50"
+                                                                                          (2, 799.99, '2024-03-01T10:30:00', 15.00), -- Using promo code "ELECTRONICS15"
+                                                                                          (3, 199.99, '2023-12-01T09:00:00', 0.00), -- No promo code
+                                                                                          (4, 1099.99, '2024-06-01T14:45:00', 100.00), -- Using promo code "TVDEAL100"
+                                                                                          (5, 149.99, '2023-11-01T15:15:00', 0.00), -- No promo code
+                                                                                          (6, 399.99, '2024-05-01T16:30:00', 20.00), -- Using promo code "DISCOUNT20"
+                                                                                          (7, 899.99, '2024-08-01T17:00:00', 10.00), -- Using promo code "SAVE10%"
+                                                                                          (8, 99.99, '2024-02-01T11:00:00', 0.00), -- No promo code
+                                                                                          (9, 499.99, '2024-01-01T12:00:00', 0.00), -- No promo code
+                                                                                          (10, 299.99, '2023-09-01T13:00:00', 10.00); -- Using promo code "AUTUMN10"
+

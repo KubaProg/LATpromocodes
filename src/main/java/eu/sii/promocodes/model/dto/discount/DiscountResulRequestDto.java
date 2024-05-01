@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class DiscountResulRequestDto implements ProductOperationRequest {
     @NotNull
     private Long productId;
