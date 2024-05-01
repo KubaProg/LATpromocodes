@@ -10,6 +10,7 @@ import eu.sii.promocodes.model.dto.promoCode.PromoCodePercentageRequestDto;
 import eu.sii.promocodes.repository.PromoCodeAmountRepository;
 import eu.sii.promocodes.repository.PromoCodePercentageRepository;
 import eu.sii.promocodes.utils.OperationUtils;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class PromoCodeService {
     private final PromoCodePercentageRepository promoCodePercentageRepository;
     private final PromoCodeMapper promoCodeMapper;
 
+    @Transactional
     public void addPromoCodeAmount(PromoCodeAmountRequestDto promoCodeAmountRequestDto) {
         OperationUtils.isCurrencyAndDateValid(promoCodeAmountRequestDto.getCurrency(), promoCodeAmountRequestDto.getExpirationDate());
         String code = promoCodeAmountRequestDto.getCode();
@@ -34,6 +36,7 @@ public class PromoCodeService {
         this.promoCodeAmountRepository.save(this.promoCodeMapper.mapToPromoCodeAmount(promoCodeAmountRequestDto));
     }
 
+    @Transactional
     public void addPromoCodePercentage(PromoCodePercentageRequestDto promoCodePercentageRequestDto) {
         OperationUtils.isCurrencyAndDateValid(promoCodePercentageRequestDto.getCurrency(), promoCodePercentageRequestDto.getExpirationDate());
         String code = promoCodePercentageRequestDto.getCode();
@@ -72,6 +75,14 @@ public class PromoCodeService {
         } else {
             throw new PromoCodeNotFoundException(code);
         }
+     }
+
+
+     public void updatePromoCodeUsages(String code){
+        this.promoCodeAmountRepository.findByCode(code).ifPresent(promoCodeAmount -> {
+            promoCodeAmount.setCurrentUsages(promoCodeAmount.getCurrentUsages() + 1);
+            this.promoCodeAmountRepository.save(promoCodeAmount);
+        });
      }
 
 }

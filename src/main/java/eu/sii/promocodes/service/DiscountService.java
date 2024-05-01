@@ -4,6 +4,7 @@ import eu.sii.promocodes.exception.product.ProductNotFoundException;
 import eu.sii.promocodes.model.Product;
 import eu.sii.promocodes.model.dto.discount.DiscountResulRequestDto;
 import eu.sii.promocodes.model.dto.discount.DiscountResultResponseDto;
+import eu.sii.promocodes.model.dto.interfaces.ProductOperationRequest;
 import eu.sii.promocodes.repository.ProductRepository;
 import eu.sii.promocodes.utils.DiscountCalculatingUtils;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +17,11 @@ public class DiscountService {
     private final PromoCodeService promoCodeService;
     private final ProductRepository productRepository;
 
-    public DiscountResultResponseDto getDiscountPrice(DiscountResulRequestDto discountResulRequestDto) {
+    public DiscountResultResponseDto getDiscountPrice(ProductOperationRequest productOperationRequest) {
 
-        Object promoCode = promoCodeService.getPromoCodeDetailsByCode(discountResulRequestDto.getPromoCode());
-        Product product = productRepository.findById(discountResulRequestDto.getProductId())
-                .orElseThrow(() -> new ProductNotFoundException(discountResulRequestDto.getProductId()));
+        Object promoCode = promoCodeService.getPromoCodeDetailsByCode(productOperationRequest.getPromoCode());
+        Product product = productRepository.findById(productOperationRequest.getProductId())
+                .orElseThrow(() -> new ProductNotFoundException(productOperationRequest.getProductId()));
 
         return DiscountCalculatingUtils.calculateDiscountPrice(promoCode, product);
     }

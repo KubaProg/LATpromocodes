@@ -8,6 +8,7 @@ import eu.sii.promocodes.model.dto.product.ProductRequestDto;
 import eu.sii.promocodes.model.dto.product.ProductResponseDto;
 import eu.sii.promocodes.repository.ProductRepository;
 import eu.sii.promocodes.utils.OperationUtils;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
 
+    @Transactional
     public void addProduct(ProductRequestDto productCreateDto) {
         OperationUtils.isRequestCurrencyValid(productCreateDto.getCurrency());
         this.productRepository.save(productMapper.mapToProduct(productCreateDto));
@@ -30,6 +32,7 @@ public class ProductService {
         return this.productRepository.findAll().stream().map(productMapper::mapToProductResponseDto).toList();
     }
 
+    @Transactional
     public ProductResponseDto updateProduct(@RequestBody ProductRequestDto productCreateDto) {
 
         Long productId = productCreateDto.getId();
