@@ -103,6 +103,21 @@
     }
     ```
 
+#### 7.1. Get a Special Phrase Discount
+
+- **Method:** `POST`
+- **URL:** [http://localhost:8080/discount/special](http://localhost:8080/discount/special)
+- **Request Body:**
+
+    ```json
+    {
+        "productId": 1,
+        "promoCode": "EXTRA"
+    }
+    ```
+
+- **Description:** Passing the phrase `EXTRA` grants a 50% discount on the product price. Using `EXTRA90` (and synonyms `EXTRA_90`, `EXTRA-90`, `MEGAEXTRA`, or `SUPEREXTRA`) triggers a 90% discount. Any other phrase leaves the price unchanged and returns an explanatory message.
+
 #### 8. Simulate a Purchase
 
 - **Method:** `POST`
