@@ -116,7 +116,7 @@
     }
     ```
 
-- **Description:** Passing the phrase `EXTRA` grants a 50% discount on the product price. Using `EXTRA90` (and synonyms `EXTRA_90`, `EXTRA-90`, `MEGAEXTRA`, or `SUPEREXTRA`) triggers a 90% discount. Any other phrase leaves the price unchanged and returns an explanatory message.
+- **Description:** Passing the phrase `MINI` grants a 10% discount on the product price, while `EXTRA` grants 50%. Using `EXTRA90` (and synonyms `EXTRA_90`, `EXTRA-90`, `MEGAEXTRA`, or `SUPEREXTRA`) triggers a 90% discount. Any other phrase leaves the price unchanged and returns an explanatory message.
 
 #### 8. Simulate a Purchase
 
